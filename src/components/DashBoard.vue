@@ -1,15 +1,16 @@
 <template>
   <div style="margin-left: 10%">
+    <div class="bg-white shadow px-4 py-2 flex justify-between items-center">
+      <h1 class="text-xl font-semibold">Dashboard</h1>
+      <router-link to="/" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">LogOut</router-link>
+    </div>
     <div class="upper-Section">
-      <span class="AMS">Med-Inventory</span
-      ><span class="asm">Inventory Management System</span>
+      <span class="AMS">Med-Inventory</span><span class="asm">Inventory Management System</span>
       <div>
         <div class="sd">System's Instock - {{ inStock }}</div>
         <div class="sm">
           System's Distributed - {{ distributed }}
-          <span class="add-entry" @click="openAddDialogue"
-            >Click here to add new entry</span
-          >
+          <span class="add-entry" @click="openAddDialogue">Click here to add new entry</span>
         </div>
       </div>
     </div>
@@ -17,48 +18,25 @@
       <el-table :data="tableData" style="width: 100%">
         <el-table-column label="employee ID" prop="empID"></el-table-column>
         <el-table-column label="employee Name" prop="empName"></el-table-column>
-        <el-table-column
-          label="Device Name"
-          prop="systemAssigned"
-        ></el-table-column>
+        <el-table-column label="Device Name" prop="systemAssigned"></el-table-column>
 
         <el-table-column align="right">
           <template slot-scope="scope">
-            <i
-              class="el-icon-edit"
-              @click="handleEdit(scope.$index, scope.row)"
-            ></i>
-            <i
-              class="el-icon-delete"
-              @click="handleDelete(scope.$index, scope.row)"
-            ></i>
+            <i class="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"></i>
+            <i class="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"></i>
           </template>
         </el-table-column>
       </el-table>
     </div>
-    <el-dialog
-      title="Please fill the following details"
-      :visible.sync="centerDialogVisible"
-      width="30%"
-      center
-    >
+    <el-dialog title="Please fill the following details" :visible.sync="centerDialogVisible" width="30%" center>
       <div style="margin-bottom: 10px">
-        <el-input
-          placeholder="please enter employee ID"
-          v-model="empIDforDialoge"
-        ></el-input>
+        <el-input placeholder="please enter employee ID" v-model="empIDforDialoge"></el-input>
       </div>
       <div style="margin-bottom: 10px">
-        <el-input
-          placeholder="please enter employee name"
-          v-model="empNameforDialoge"
-        ></el-input>
+        <el-input placeholder="please enter employee name" v-model="empNameforDialoge"></el-input>
       </div>
       <div>
-        <el-input
-          placeholder="please enter device details"
-          v-model="systemforDialoge"
-        ></el-input>
+        <el-input placeholder="please enter device details" v-model="systemforDialoge"></el-input>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="centerDialogVisible = false">Cancel</el-button>
@@ -184,7 +162,7 @@ export default {
       }
     },
   },
-  created() {},
+  created() { },
 };
 </script>
 
@@ -201,6 +179,7 @@ export default {
     0 41.8px 33.4px rgba(248, 243, 243, 0.09),
     0 100px 80px rgba(255, 255, 255, 0.12);
 }
+
 .list-of-assets {
   overflow: hidden;
   height: 700px;
